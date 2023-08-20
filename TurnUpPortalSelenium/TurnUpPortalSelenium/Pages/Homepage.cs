@@ -21,6 +21,7 @@ namespace TurnUpPortalSelenium.Pages
             IWebElement tmoption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
             tmoption.Click();
 
+            Thread.Sleep(2000);
 
         }
     }

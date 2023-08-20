@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +19,18 @@ namespace TurnUpPortalSelenium.Pages
             driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
 
             //Identify username textbox and enter valid userename
+            try
+            {
+                IWebElement usernametextbox = driver.FindElement(By.Id("UserName"));
+                usernametextbox.SendKeys("hari");
+            }
 
-            IWebElement usernametextbox = driver.FindElement(By.Id("UserName"));
-            usernametextbox.SendKeys("hari");
-
+            catch (Exception ex)
+            {
+                Assert.Fail("TurnUp Portal did not open", ex.Message);
+            }
 
             //Identify password textbox and enter valid password
-
             IWebElement passwordtextbox = driver.FindElement(By.Id("Password"));
             passwordtextbox.SendKeys("123123");
 
