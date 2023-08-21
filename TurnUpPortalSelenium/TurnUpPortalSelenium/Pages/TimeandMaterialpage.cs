@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using TurnUpPortalSelenium.Utilities;
 
 namespace TurnUpPortalSelenium.Pages
 {
@@ -23,8 +24,10 @@ namespace TurnUpPortalSelenium.Pages
             IWebElement typecodedropdown = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[1]/div/span[1]/span/span[2]/span"));
             typecodedropdown.Click();
 
+            wait.waittobeclickable(driver, "XPath", "//*[@id=\"TypeCode_listbox\"]/li[2]", 3);
+
             IWebElement timetypecode = driver.FindElement(By.XPath("//*[@id=\"TypeCode_listbox\"]/li[2]"));
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             timetypecode.Click();
 
             //Enter the code
@@ -72,8 +75,10 @@ namespace TurnUpPortalSelenium.Pages
             IWebElement gotolastpagebutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             gotolastpagebutton.Click();
 
+            wait.waittobeclickable(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]", 3);
+
             IWebElement Editbutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             Editbutton.Click();
 
             Thread.Sleep(3000);
@@ -83,11 +88,16 @@ namespace TurnUpPortalSelenium.Pages
 
             IWebElement newcodedropdown = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[1]/div/span[1]/span/span[2]/span"));
             newcodedropdown.Click();
+
+            wait.waittobeclickable(driver, "XPath", "//*[@id=\"TypeCode_listbox\"]/li[1]", 3);
+
             IWebElement matdropdown = driver.FindElement(By.XPath("//*[@id=\"TypeCode_listbox\"]/li[1]")); ////*[@id="TimeMaterialEditForm"]/div/div[1]/div/span[1]/span/span[1]
             Thread.Sleep(1000);
             matdropdown.Click();
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
+
+            wait.waittobevisible(driver, "Id", "Code", 2);
 
             //Change Code
 
@@ -95,7 +105,7 @@ namespace TurnUpPortalSelenium.Pages
             newcodetextbox.Clear();
             newcodetextbox.SendKeys("updatedcode");
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             //Change description
 
@@ -103,7 +113,7 @@ namespace TurnUpPortalSelenium.Pages
             newdesctextbox.Clear();
             newdesctextbox.SendKeys("Testdatanew");
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             // change the price
 
@@ -114,19 +124,22 @@ namespace TurnUpPortalSelenium.Pages
             overlappingtag.Click();
             pricetextboxnew.SendKeys("300");
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             //Click Save
 
             IWebElement newsavebutton = driver.FindElement(By.Id("SaveButton"));
             newsavebutton.Click();
 
-            Thread.Sleep(3000);
+            //Thread.Sleep(3000);
+
+            wait.waittobeclickable(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[4]/a[4]/span", 3);
 
             //Check if the record has been edited successfully
             IWebElement gotolastpagebutton1 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));//*[@id="tmsGrid"]/div[4]/a[4]/span
             gotolastpagebutton1.Click();
 
+            wait.waittobevisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]", 3);
             IWebElement Newdesc = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
             Assert.That(Newdesc.Text == "Testdatanew", "New record has not been edited");
 
@@ -146,12 +159,13 @@ namespace TurnUpPortalSelenium.Pages
         {
             //Delete new record
 
-            Thread.Sleep(3000);
+            //Thread.Sleep(3000);
 
             IWebElement gotolastpagebutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             gotolastpagebutton.Click();
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
+            wait.waittobeclickable(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]", 3);
 
             IWebElement deletebutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
             deletebutton.Click();
