@@ -10,6 +10,6 @@ namespace TurnUpPortalSelenium.Utilities
 {
     public class Commondriver
     {
-        public static IWebDriver driver;
+        public IWebDriver driver;
     }
 }

@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using TurnUpPortalSelenium.Pages;
@@ -13,10 +13,10 @@ namespace TurnUpPortalSelenium.Tests
 {
     [Parallelizable]
     [TestFixture]
-    public class TM_tests : Commondriver 
+    public class EmployeesTests : Commondriver
     {
         [SetUp]
-        public void Setuptest()
+        public void EmployeesSetUp()
         {
             driver = new ChromeDriver();
 
@@ -26,31 +26,39 @@ namespace TurnUpPortalSelenium.Tests
 
             //Home page object initialization and definition
             Homepage homepageobj = new Homepage();
-            homepageobj.GotoTimeandMaterialpage(driver);
+            homepageobj.GoToEmployeesPage(driver);
         }
+
         [Test, Order(1)]
-        public void Createtimetest()
+        public void CreateEmployeeTest()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.Createtimerecord(driver);
+            Employeespage employeesPageObj = new Employeespage();
+            employeesPageObj.CreateEmployee(driver);
         }
+
         [Test, Order(2)]
-        public void Edittimetest()
+        public void EditEmployeeTest()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.edittimerecord(driver);
+            Employeespage employeesPageObj = new Employeespage();
+            employeesPageObj.EditEmployee(driver);
         }
+
         [Test, Order(3)]
-        public void Deletetimetest()
+
+        public void DeleteEmployeeTest()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.deletetimerecord(driver);
+            Employeespage employeePageobj = new Employeespage();
+            employeePageobj.DeleteEmployee(driver);
         }
+
         [TearDown]
-        public void closetest()
+
+      public void TearDown()
+
         {
             driver.Quit();
         }
-            
+
+
     }
 }
