@@ -55,8 +55,8 @@ namespace TurnUpPortalSelenium.Pages
             IWebElement gotolastpagebutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             gotolastpagebutton.Click();
 
-            IWebElement newcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            Assert.That(newcode.Text == "123", "New record is not Created");
+            
+            //Assert.That(newcode.Text == "123", "New record is not Created");
             
            /* if (newcode.Text == "123")
             {
@@ -67,8 +67,13 @@ namespace TurnUpPortalSelenium.Pages
                 Assert.Fail("New record is not created");
             } */
 
+        } 
+        public string GetCode(IWebDriver driver)
+        {
+            IWebElement newcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return newcode.Text;
         }
-        public void edittimerecord(IWebDriver driver)
+        public void edittimerecord(IWebDriver driver, string description)
         {
             //Editing new record
 
@@ -111,7 +116,7 @@ namespace TurnUpPortalSelenium.Pages
 
             IWebElement newdesctextbox = driver.FindElement(By.Id("Description"));
             newdesctextbox.Clear();
-            newdesctextbox.SendKeys("Testdatanew");
+            newdesctextbox.SendKeys(description);
 
             //Thread.Sleep(1000);
 
@@ -140,8 +145,8 @@ namespace TurnUpPortalSelenium.Pages
             gotolastpagebutton1.Click();
 
             wait.waittobevisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]", 3);
-            IWebElement Newdesc = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
-            Assert.That(Newdesc.Text == "Testdatanew", "New record has not been edited");
+           
+            
 
             /*
             if (Newdesc.Text == "Testdatanew")
@@ -155,6 +160,11 @@ namespace TurnUpPortalSelenium.Pages
             }
             */
         }
+        public string GetEditedDesc(IWebDriver driver)
+        {
+            IWebElement Newdesc = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return Newdesc.Text;
+        }
         public void deletetimerecord(IWebDriver driver)
         {
             //Delete new record
@@ -164,17 +174,20 @@ namespace TurnUpPortalSelenium.Pages
             IWebElement gotolastpagebutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             gotolastpagebutton.Click();
 
-            //Thread.Sleep(1000);
+            Thread.Sleep(2000);
             wait.waittobeclickable(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]", 3);
 
             IWebElement deletebutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
             deletebutton.Click();
 
+            Thread.Sleep(2000);
+
             driver.SwitchTo().Alert().Accept();
+            wait.waittobevisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 5);
+            Thread.Sleep(2000);
 
-
-            IWebElement newcode1 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            Assert.That(newcode1.Text != "123", "New record has not been deleted");
+           // IWebElement newcode1 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            
 
            /*
             if (newcode1.Text != "123")
@@ -188,6 +201,12 @@ namespace TurnUpPortalSelenium.Pages
                 Console.WriteLine("New record has not been deleted");
             }
            */
+        }
+
+        public string GetCodeValue(IWebDriver driver)
+        {
+            IWebElement newCodeDelete = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return newCodeDelete.Text;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace TurnUpPortalSelenium.Tests
         public void Edittimetest()
         {
             TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.edittimerecord(driver);
+            tmPageobj.edittimerecord(driver, "desc");
         }
         [Test, Order(3)]
         public void Deletetimetest()
