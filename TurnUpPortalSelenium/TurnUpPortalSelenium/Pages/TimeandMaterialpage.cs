@@ -55,17 +55,21 @@ namespace TurnUpPortalSelenium.Pages
             IWebElement gotolastpagebutton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             gotolastpagebutton.Click();
 
-            
-            //Assert.That(newcode.Text == "123", "New record is not Created");
-            
-           /* if (newcode.Text == "123")
-            {
-                Assert.Pass("New record is created");
-            }
-            else
-            {
-                Assert.Fail("New record is not created");
-            } */
+            wait.waittobevisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 5);
+
+            IWebElement newcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+
+
+            Assert.That(newcode.Text == "123", "New record is not Created");
+
+            /* if (newcode.Text == "123")
+             {
+                 Assert.Pass("New record is created");
+             }
+             else
+             {
+                 Assert.Fail("New record is not created");
+             } */
 
         } 
         public string GetCode(IWebDriver driver)
@@ -145,8 +149,10 @@ namespace TurnUpPortalSelenium.Pages
             gotolastpagebutton1.Click();
 
             wait.waittobevisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]", 3);
-           
-            
+
+            IWebElement Newdesc = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+
+            Assert.That(Newdesc.Text  == description, "New record not editted successfully");
 
             /*
             if (Newdesc.Text == "Testdatanew")
@@ -186,7 +192,9 @@ namespace TurnUpPortalSelenium.Pages
             wait.waittobevisible(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 5);
             Thread.Sleep(2000);
 
-           // IWebElement newcode1 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            IWebElement newcode1 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+
+            Assert.That(newcode1.Text != "123", "New record not deleted successfully");
             
 
            /*
