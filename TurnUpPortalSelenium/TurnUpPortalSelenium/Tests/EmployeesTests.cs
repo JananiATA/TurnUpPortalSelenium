@@ -13,7 +13,7 @@ namespace TurnUpPortalSelenium.Tests
 {
     [Parallelizable]
     [TestFixture]
-    public class EmployeesTests : Commondriver
+    public class EmployeesTests : CommonDriver
     {
         [SetUp]
         public void EmployeesSetUp()
@@ -21,25 +21,25 @@ namespace TurnUpPortalSelenium.Tests
             driver = new ChromeDriver();
 
             //login page object initialization and Definition
-            Loginpage loginpageobj = new Loginpage();
-            loginpageobj.loginactions(driver);
+            LoginPage loginPageObj = new LoginPage();
+            loginPageObj.LoginActions(driver);
 
             //Home page object initialization and definition
-            Homepage homepageobj = new Homepage();
-            homepageobj.GoToEmployeesPage(driver);
+            HomePage homePageObj = new HomePage();
+            homePageObj.GoToEmployeesPage(driver);
         }
 
         [Test, Order(1)]
         public void CreateEmployeeTest()
         {
-            Employeespage employeesPageObj = new Employeespage();
+            EmployeesPage employeesPageObj = new EmployeesPage();
             employeesPageObj.CreateEmployee(driver);
         }
 
         [Test, Order(2)]
         public void EditEmployeeTest()
         {
-            Employeespage employeesPageObj = new Employeespage();
+            EmployeesPage employeesPageObj = new EmployeesPage();
             employeesPageObj.EditEmployee(driver);
         }
 
@@ -47,8 +47,8 @@ namespace TurnUpPortalSelenium.Tests
 
         public void DeleteEmployeeTest()
         {
-            Employeespage employeePageobj = new Employeespage();
-            employeePageobj.DeleteEmployee(driver);
+            EmployeesPage employeePageObj = new EmployeesPage();
+            employeePageObj.DeleteEmployee(driver);
         }
 
         [TearDown]

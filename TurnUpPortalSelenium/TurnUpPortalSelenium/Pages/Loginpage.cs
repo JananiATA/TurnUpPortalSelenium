@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace TurnUpPortalSelenium.Pages
 {
-    public class Loginpage
+    public class LoginPage
     {
-        public void loginactions(IWebDriver driver)
+        public void LoginActions(IWebDriver driver)
         {
             driver.Manage().Window.Maximize();
 
@@ -21,8 +21,8 @@ namespace TurnUpPortalSelenium.Pages
             //Identify username textbox and enter valid userename
             try
             {
-                IWebElement usernametextbox = driver.FindElement(By.Id("UserName"));
-                usernametextbox.SendKeys("hari");
+                IWebElement userNameTextBox = driver.FindElement(By.Id("UserName"));
+                userNameTextBox.SendKeys("hari");
             }
 
             catch (Exception ex)
@@ -31,13 +31,13 @@ namespace TurnUpPortalSelenium.Pages
             }
 
             //Identify password textbox and enter valid password
-            IWebElement passwordtextbox = driver.FindElement(By.Id("Password"));
-            passwordtextbox.SendKeys("123123");
+            IWebElement passwordTextBox = driver.FindElement(By.Id("Password"));
+            passwordTextBox.SendKeys("123123");
 
             //Click on the login button
 
-            IWebElement loginbutton = driver.FindElement(By.XPath("//*[@id=\"loginForm\"]/form/div[3]/input[1]"));
-            loginbutton.Click();
+            IWebElement loginButton = driver.FindElement(By.XPath("//*[@id=\"loginForm\"]/form/div[3]/input[1]"));
+            loginButton.Click();
         }
     }
 }

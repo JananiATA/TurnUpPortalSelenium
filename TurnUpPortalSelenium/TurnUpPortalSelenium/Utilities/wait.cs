@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace TurnUpPortalSelenium.Utilities
 {
-    public class wait
+    public class Wait
     {
-        public static void waittobeclickable(IWebDriver driver, string locatortype, string locatorvalue, int seconds)
+        public static void WaitToBeClickable(IWebDriver driver, string locatortype, string locatorvalue, int seconds)
         {
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
             if(locatortype == "XPath")
@@ -31,7 +31,7 @@ namespace TurnUpPortalSelenium.Utilities
             }
         }
 
-        public static void waittobevisible(IWebDriver driver, string locatortype, string locatorvalue, int seconds)
+        public static void WaitToBeVisible(IWebDriver driver, string locatortype, string locatorvalue, int seconds)
         {
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
             if (locatortype == "XPath")

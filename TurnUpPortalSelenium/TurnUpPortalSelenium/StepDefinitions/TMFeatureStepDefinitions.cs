@@ -1,4 +1,4 @@
-using NUnit.Framework;
+    using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using System;
 using TechTalk.SpecFlow;
@@ -8,36 +8,36 @@ using TurnUpPortalSelenium.Utilities;
 namespace TurnUpPortalSelenium.StepDefinitions
 {
     [Binding]
-    public class TMFeatureStepDefinitions : Commondriver 
+    public class TMFeatureStepDefinitions : CommonDriver 
     {
         [Given(@"I logged into TurnUp portal successfully")]
         public void GivenILoggedIntoTurnUpPortalSuccessfully()
         {
             driver = new ChromeDriver();
             //login page object initialization and Definition
-            Loginpage loginpageobj = new Loginpage();
-            loginpageobj.loginactions(driver);
+            LoginPage loginPageObj = new LoginPage();
+            loginPageObj.LoginActions(driver);
         }
 
         [Given(@"I navigate to Time and Materials page")]
         public void GivenINavigateToTimeAndMaterialsPage()
         {
             //Home page object initialization and definition
-            Homepage homepageobj = new Homepage();
-            homepageobj.GotoTimeandMaterialpage(driver);
+            HomePage homepageobj = new HomePage();
+            homepageobj.GotoTimeandMaterialPage(driver);
         }
 
         [When(@"I create a new Time record")]
         public void WhenICreateANewTimeRecord()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.Createtimerecord(driver);
+            TimeAndMaterialPage tmPageobj = new TimeAndMaterialPage();
+            tmPageobj.CreateTimeRecord(driver);
         }
 
         [Then(@"the record should be created successfully")]
         public void ThenTheRecordShouldBeCreatedSuccessfully()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
+            TimeAndMaterialPage tmPageobj = new TimeAndMaterialPage();
             string newcode1 = tmPageobj.GetCode(driver);
             Assert.That(newcode1 == "123", "New record is not Created");
         }
@@ -45,14 +45,14 @@ namespace TurnUpPortalSelenium.StepDefinitions
         [When(@"I update '([^']*)' on existing Time record")]
         public void WhenIUpdateOnExistingTimeRecord(string p0)
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.edittimerecord(driver, p0);
+            TimeAndMaterialPage tmPageobj = new TimeAndMaterialPage();
+            tmPageobj.EditTimeRecord(driver, p0);
         }
 
         [Then(@"the record should have an updated '([^']*)'")]
         public void ThenTheRecordShouldHaveAnUpdated(string p0)
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
+            TimeAndMaterialPage tmPageobj = new TimeAndMaterialPage();
             string newDesc = tmPageobj.GetEditedDesc(driver);
             Assert.That(newDesc == p0, "Decription has not been edited");
         }
@@ -60,14 +60,14 @@ namespace TurnUpPortalSelenium.StepDefinitions
         [When(@"I delete an existing Time record")]
         public void WhenIDeleteAnExistingTimeRecord()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.deletetimerecord(driver);
+            TimeAndMaterialPage tmPageobj = new TimeAndMaterialPage();
+            tmPageobj.DeleteTimeRecord(driver);
         }
 
         [Then(@"the record should be deleted successfully")]
         public void ThenTheRecordShouldBeDeletedSuccessfully()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
+            TimeAndMaterialPage tmPageobj = new TimeAndMaterialPage();
 
             string newCode2 = tmPageobj.GetCodeValue(driver);
 

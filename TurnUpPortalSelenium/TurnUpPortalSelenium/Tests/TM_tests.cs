@@ -13,7 +13,7 @@ namespace TurnUpPortalSelenium.Tests
 {
     [Parallelizable]
     [TestFixture]
-    public class TM_tests : Commondriver 
+    public class TM_tests : CommonDriver 
     {
         [SetUp]
         public void Setuptest()
@@ -21,33 +21,33 @@ namespace TurnUpPortalSelenium.Tests
             driver = new ChromeDriver();
 
             //login page object initialization and Definition
-            Loginpage loginpageobj = new Loginpage();
-            loginpageobj.loginactions(driver);
+            LoginPage loginPageObj = new LoginPage();
+            loginPageObj.LoginActions(driver);
 
             //Home page object initialization and definition
-            Homepage homepageobj = new Homepage();
-            homepageobj.GotoTimeandMaterialpage(driver);
+            HomePage homePageObj = new HomePage();
+            homePageObj.GotoTimeandMaterialPage(driver);
         }
         [Test, Order(1)]
-        public void Createtimetest()
+        public void CreateTimeTest()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.Createtimerecord(driver);
+            TimeAndMaterialPage tmPageObj = new TimeAndMaterialPage();
+            tmPageObj.CreateTimeRecord(driver);
         }
         [Test, Order(2)]
-        public void Edittimetest()
+        public void EditTimeTest()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.edittimerecord(driver, "desc");
+            TimeAndMaterialPage tmPageObj = new TimeAndMaterialPage();
+            tmPageObj.EditTimeRecord(driver, "desc");
         }
         [Test, Order(3)]
-        public void Deletetimetest()
+        public void DeleteTimeTest()
         {
-            TimeandMaterialpage tmPageobj = new TimeandMaterialpage();
-            tmPageobj.deletetimerecord(driver);
+            TimeAndMaterialPage tmPageObj = new TimeAndMaterialPage();
+            tmPageObj.DeleteTimeRecord(driver);
         }
         [TearDown]
-        public void closetest()
+        public void CloseTest()
         {
             driver.Quit();
         }

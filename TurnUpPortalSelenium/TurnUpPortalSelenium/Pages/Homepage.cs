@@ -8,20 +8,20 @@ using TurnUpPortalSelenium.Utilities;
 
 namespace TurnUpPortalSelenium.Pages
 {
-    public class Homepage
+    public class HomePage
     {
-        public void GotoTimeandMaterialpage(IWebDriver driver)
+        public void GotoTimeandMaterialPage(IWebDriver driver)
         {
             //Go to Time and Material page
 
-            IWebElement administrationdropdown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a/span"));
-            administrationdropdown.Click();
+            IWebElement administrationDropdown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a/span"));
+            administrationDropdown.Click();
 
-            wait.waittobeclickable(driver, "XPath", "/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a", 7);
+            Wait.WaitToBeClickable(driver, "XPath", "/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a", 7);
             //select the Time and materials option
 
-            IWebElement tmoption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
-            tmoption.Click();
+            IWebElement tmOption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
+            tmOption.Click();
 
             Thread.Sleep(2000);
 
@@ -31,10 +31,10 @@ namespace TurnUpPortalSelenium.Pages
         {
             //Go To Employees Page
 
-            IWebElement administrationdropdown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a/span"));
-            administrationdropdown.Click();
+            IWebElement administrationDropdown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a/span"));
+            administrationDropdown.Click();
 
-            wait.waittobeclickable(driver, "XPath", "/html/body/div[3]/div/div/ul/li[5]/ul/li[2]/a", 5);
+            Wait.WaitToBeClickable(driver, "XPath", "/html/body/div[3]/div/div/ul/li[5]/ul/li[2]/a", 5);
 
             IWebElement employeesOption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[2]/a"));
             employeesOption.Click();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TurnUpPortalSelenium.Utilities
 {
-    public class Commondriver
+    public class CommonDriver
     {
         public IWebDriver driver;
     }

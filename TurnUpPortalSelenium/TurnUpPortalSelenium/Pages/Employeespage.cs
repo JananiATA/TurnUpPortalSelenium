@@ -11,20 +11,20 @@ using TurnUpPortalSelenium.Utilities;
 
 namespace TurnUpPortalSelenium.Pages
 {
-    public class Employeespage
+    public class EmployeesPage
     {
         public void CreateEmployee(IWebDriver driver)
         {
             //Click on the Create Button
 
-            wait.waittobeclickable(driver, "XPath", "//*[@id=\"container\"]/p/a", 3);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"container\"]/p/a", 3);
 
             IWebElement createButton = driver.FindElement(By.XPath("//*[@id=\"container\"]/p/a"));
             createButton.Click();
 
             //Enter Name
 
-            wait.waittobevisible(driver, "Id", "Name", 3);
+            Wait.WaitToBeVisible(driver, "Id", "Name", 3);
 
             IWebElement nametextBox = driver.FindElement(By.Id("Name"));
             nametextBox.SendKeys("Ajay1");
@@ -63,7 +63,7 @@ namespace TurnUpPortalSelenium.Pages
 
             // Enter contact details
 
-            wait.waittobevisible(driver, "Id", "FirstName", 5);
+            Wait.WaitToBeVisible(driver, "Id", "FirstName", 5);
 
             IWebElement firstNameTextBox = driver.FindElement(By.Id("FirstName"));
             firstNameTextBox.SendKeys("TestContactFirst");
@@ -106,7 +106,7 @@ namespace TurnUpPortalSelenium.Pages
           
             //Enter Password
 
-            wait.waittobevisible(driver, "Id", "Password", 3);
+            Wait.WaitToBeVisible(driver, "Id", "Password", 3);
 
             IWebElement passwordTextBox = driver.FindElement(By.Id("Password"));
             passwordTextBox.SendKeys("Test@1234");
@@ -128,7 +128,7 @@ namespace TurnUpPortalSelenium.Pages
             select.SelectByText("sda"); */
 
             Thread.Sleep(3000);
-            wait.waittobevisible(driver, "XPath", "//*[@id=\"groupList_listbox\"]/li[6]", 8);
+            Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"groupList_listbox\"]/li[6]", 8);
             IWebElement optionDropdown = driver.FindElement(By.XPath("//*[@id=\"groupList_listbox\"]/li[6]"));
             optionDropdown.Click();
 
@@ -144,7 +144,7 @@ namespace TurnUpPortalSelenium.Pages
             Thread.Sleep(7000);
             
 
-            wait.waittobeclickable(driver, "XPath", "//*[@id=\"container\"]/div/a", 3);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"container\"]/div/a", 3);
 
 
             //Verify if the Employee record is saved successfully
@@ -154,12 +154,12 @@ namespace TurnUpPortalSelenium.Pages
 
             Thread.Sleep(2000);
 
-            wait.waittobeclickable(driver, "XPath", "//*[@id=\"usersGrid\"]/div[4]/a[4]/span", 3);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"usersGrid\"]/div[4]/a[4]/span", 3);
             
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[4]/a[4]/span"));////*[@id="usersGrid"]/div[4]/a[4]/span
             goToLastPageButton.Click();
             Thread.Sleep(2000);
-            wait.waittobevisible(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 3);
+            Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 3);
 
             IWebElement name = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
             Assert.That(name.Text == "Ajay1", "Employee record not created");
@@ -197,7 +197,7 @@ namespace TurnUpPortalSelenium.Pages
 
             driver.SwitchTo().Frame(0);
 
-            wait.waittobevisible(driver, "Id", "FirstName", 5);
+            Wait.WaitToBeVisible(driver, "Id", "FirstName", 5);
 
             IWebElement editFNTextBox = driver.FindElement(By.Id("FirstName"));
             editFNTextBox.Clear();
@@ -251,7 +251,7 @@ namespace TurnUpPortalSelenium.Pages
 
             driver.SwitchTo().DefaultContent();
 
-            wait.waittobevisible(driver, "Id", "Password", 3);
+            Wait.WaitToBeVisible(driver, "Id", "Password", 3);
 
             IWebElement editPWTextBox = driver.FindElement(By.Id("Password"));
             editPWTextBox.Clear();
@@ -269,7 +269,7 @@ namespace TurnUpPortalSelenium.Pages
             //selectElement.Click();
 
             //Thread.Sleep(3000);
-            wait.waittobevisible(driver, "XPath", "//*[@id=\"groupList_listbox\"]/li[2]", 5);
+            Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"groupList_listbox\"]/li[2]", 5);
             IWebElement optionDropdown = driver.FindElement(By.XPath("//*[@id=\"groupList_listbox\"]/li[2]"));
             optionDropdown.Click();
 
@@ -286,19 +286,19 @@ namespace TurnUpPortalSelenium.Pages
             Thread.Sleep(7000);
 
 
-            wait.waittobeclickable(driver, "XPath", "//*[@id=\"container\"]/div/a", 3);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"container\"]/div/a", 3);
 
             IWebElement backToListlink1 = driver.FindElement(By.XPath("//*[@id=\"container\"]/div/a")); // //*[@id="container"]/div/a
             backToListlink1.Click();
 
             Thread.Sleep(2000);
 
-            wait.waittobeclickable(driver, "XPath", "//*[@id=\"usersGrid\"]/div[4]/a[4]/span", 3);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"usersGrid\"]/div[4]/a[4]/span", 3);
 
             IWebElement goToLastPageButtonEd = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[4]/a[4]/span"));////*[@id="usersGrid"]/div[4]/a[4]/span
             goToLastPageButtonEd.Click();
             Thread.Sleep(2000);
-            wait.waittobevisible(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 3);
+            Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 3);
 
             IWebElement name = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
             Assert.That(name.Text == "AjayNew", "Employee record not edited");
@@ -313,7 +313,7 @@ namespace TurnUpPortalSelenium.Pages
 
             Thread.Sleep(3000);
 
-            wait.waittobeclickable(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[3]/a[2]", 5);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[3]/a[2]", 5);
 
             IWebElement  deleteButton = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[3]/a[2]")); ////*[@id="usersGrid"]/div[3]/table/tbody/tr[3]/td[3]/a[2]
             deleteButton.Click();
@@ -322,7 +322,7 @@ namespace TurnUpPortalSelenium.Pages
 
             driver.SwitchTo().Alert().Accept();
 
-            wait.waittobevisible(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 5);
+            Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 5);
 
             Thread.Sleep(4000);
             IWebElement deletedName = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));////*[@id="usersGrid"]/div[3]/table/tbody/tr[3]/td[1]
